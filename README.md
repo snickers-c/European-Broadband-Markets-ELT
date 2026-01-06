@@ -17,7 +17,7 @@ Dataset obsahuje jednu tabulku `EUROPEAN_BROADBAND_MARKETS_2017_FREE_DATASET`, k
 ### 1.1 ERD diagram zdrojového datasetu
 Relačný model dát z tohoto datasetu je znázornený v entitno-relačnom diagrame:
 <p align="center">
-  <img src="https://github.com/snickers-c/European-Broadband-Markets-ETL/blob/main/img/Obr%C3%A1zok%201%20-%20Entitno_rela%C4%8Dn%C3%A1%20sch%C3%A9ma.png">
+  <img src="img/erd-schema.png">
   <br>
   <em>Obrázok 1 - Entitno_relačná schéma</em>
 </p>
@@ -25,6 +25,19 @@ Relačný model dát z tohoto datasetu je znázornený v entitno-relačnom diagr
 <hr>
 
 ## 2. Dimenzionálny model
+Návrh schémy hviezdy podľa Kimballovej metodológie, obsahuje 1 tabuľku faktov `fact_broadband`, ktorá je prepojená s nasledujúcimi 3 dimenziami:
+- `dim_region` ukladá názov regiónu a jeho skratku. SCD typ 1
+- `dim_country` ukladá krajinu a jej skratku. SCD typ 1
+- `dim_date` obsahuje dátum merania štatistík. SCD typ 0
+
+Tabulka faktov `fact_broadband` obsahuje PK `id_record`, FK `id_region, id_country, id_date` a ďalej údaje o ploche kraja, počte obyvateľov, hustoty obyvateľstva, počtu domácností a ďalšie údaje zamerané na počet obyvateľstva využívajúceho danú technológiu a jej percentuálna časť s celkového obyvateľstva. 
+
+Schéma hviezdy je znázornená na diagrame pre vizualizáciu prepojenia medzi tabulkami dimenzií a tabulky faktov:
+<p align="center">
+  <img src="img/star-schema.png">
+  <br>
+  <em>Obrázok 2 - Star schéma pre European-Broadband-Markets-2017</em>
+</p>
 
 <hr>
 
